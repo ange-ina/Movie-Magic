@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <%-include('./partials/navigation')%>
+  <section id="details">
+
+    <img src="https://image.tmdb.org/t/p/original<%=movieItem[0].backdrop_path%>" alt="">
+    <div class="info">
+      <div class="rating">
+        <img src="/star.png" alt="">
+        <h4><%=movieItem[0].vote_average%><span class="small">/10</span></h4>
+        <h5><%=movieItem[0].vote_count%></h5>
+      </div>
+      <div class="favourites">
+        <a href="/favouriteItem/<%=movieItem[0].id%>/delete"><img src="/minus.png" alt=""></a>
+        <h1>Remove from favourites</h1>
+      </div>
+      <h1><%=movieItem[0].name%></h1>
+      <div class="release">
+        <p><%=movieItem[0].release_date%></p>
+        <p><%=movieItem[0].status%></p>
+      </div>
+      <div class="genres">
+        <%movieItem[0].genres.forEach(genres=>{%>
+        <div class="bubble">
+          <p><%=genres.name%></p>
+        </div>
+        <% }) %>
+      </div>
+      <h2>Plot Summary</h2>
+      <p class="summary"><%=movieItem[0].overview%></p>
+    </div>
+
+  </section>
+
+</body>
+
+</html>
